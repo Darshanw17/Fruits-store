@@ -26,7 +26,7 @@ function BannerInfo() {
           variants={FadeUp(0.5)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           className="text-3xl lg:text-6xl font-bold uppercase">
           Online Fruit Store
         </motion.h1>
@@ -53,7 +53,7 @@ function TextP({ fadeUP, children }) {
       variants={fadeUP}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}>
+      viewport={{ once: true, amount: 0.3 }}>
       {children}
     </motion.p>
   );
@@ -65,8 +65,8 @@ function BannerImage() {
       <motion.img
         initial={{ opacity: 0, x: 200, rotate: 75 }}
         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-        transition={{ duration: 1.5, delay: 0.2 }}
-        viewport={{ once: true }}
+        transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, amount: 0.3 }}
         src={BannerPng}
         alt="Fruits"
         className="w-[350px] md:max-w-[500px]

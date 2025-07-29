@@ -2,8 +2,9 @@ import Fruit1 from "../../assets/fruits/apple.png";
 import Fruit2 from "../../assets/fruits/orange.png";
 import Fruit3 from "../../assets/fruits/avocado.png";
 import Fruit4 from "../../assets/fruits/cherry.png";
-import { animate, delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeLeft } from "../../utility/animation";
+
 const MenusData = [
   {
     id: 1,
@@ -38,10 +39,11 @@ const MenusData = [
     delay: 1.2,
   },
 ];
+
 const Menus = () => {
   return (
-    <section>
-      <div className="container">
+    <section className="section-padding">
+      <div className="modern-container">
         <Header />
         <MenuCard />
       </div>
@@ -52,42 +54,54 @@ const Menus = () => {
 function Header() {
   return (
     <motion.h1
-      initial={{ opacity: 0, x: -200 }}
+      initial={{ opacity: 0, x: -60 }}
       whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1, delay: 0.3 }}
-      className=" uppercase text-2xl font-bold text-left pb-10">
-      Our Menus
+      transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+      viewport={{ once: true }}
+      className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+      Our Fresh Menus
     </motion.h1>
   );
 }
+
 function MenuCard() {
   return (
-    <div
-      className="grid grid-cols-1 sm:grid-cols-2 
-              md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
       {MenusData.map((item) => (
         <motion.div
           initial="hidden"
-          whileInView={"visible"}
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={FadeLeft(item.delay)}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05, y: -8 }}
+          transition={{ type: "spring", stiffness: 300 }}
           key={item.id}
-          className="bg-white rounded-3xl px-4
-                        py-2 shadow-[0_0_22px_0_rgba(0,0,0,0.15)] flex flex-row
-                        justify-around items-center gap-3">
-          <img
-            src={item.img}
-            alt="Fruit"
-            className="w-[60px] mb-4 scale-110
-                        transform -translate-y-6"
-          />
-          <div>
-            <h1 className="text-lg font-semibold">{item.title}</h1>
-            <p className="text-lg font-semibold text-secondary">{item.price}</p>
+          className="glass-card p-6 flex flex-col justify-center items-center gap-4 
+                     hover-card group cursor-pointer">
+          <div className="relative">
+            <img
+              src={item.img}
+              alt="Fruit"
+              className="w-20 h-20 object-contain transform group-hover:scale-110 
+                         transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-200/20 to-secondary-200/20 
+                           rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 
+                           transition-opacity duration-300"></div>
+          </div>
+          <div className="text-center">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary-600 
+                          transition-colors duration-300">
+              {item.title}
+            </h3>
+            <p className="text-2xl font-bold gradient-text-warm">
+              {item.price}
+            </p>
           </div>
         </motion.div>
       ))}
     </div>
   );
 }
+
 export default Menus;

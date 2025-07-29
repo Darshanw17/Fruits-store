@@ -34,7 +34,7 @@ function BannerInfo() {
           variants={FadeLeft(0.5)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           className="text-3xl lg:text-6xl font-bold uppercase">
           Brand info
         </motion.h1>
@@ -42,7 +42,7 @@ function BannerInfo() {
           variants={FadeLeft(0.7)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}>
+          viewport={{ once: true, amount: 0.3 }}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores,
           nobis omnis minus nesciunt consequatur cupiditate sequi reprehenderit.
           Consequuntur itaque voluptates sint quasi nobis, ipsam iusto

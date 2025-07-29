@@ -2,12 +2,14 @@ import BannerPng from "../../assets/fruits-splash.png";
 import { motion } from "framer-motion";
 import { FadeUp } from "../../utility/animation";
 import BTN from "../BTN/BTN";
+
 const Banner = () => {
   return (
-    <section className="bg-secondary/10 mt-12">
-      <div
-        className="container grid grid-cols-1 
-      md:grid-cols-2 space-y-6 py-14">
+    <section className="section-padding relative overflow-hidden">
+      <div className="modern-container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-100/20 via-transparent to-secondary-100/20 rounded-full blur-3xl scale-150"></div>
+        
         {/* Banner image */}
         <BannerImage />
         {/* Brand info */}
@@ -16,50 +18,52 @@ const Banner = () => {
     </section>
   );
 };
+
 function BannerImage() {
   return (
-    <div className="flex  justify-center items-center">
+    <div className="flex justify-center items-center relative">
+      {/* Glow effect behind image */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-200/30 to-secondary-200/30 rounded-full blur-2xl scale-110"></div>
+      
       <motion.img
         initial={{ opacity: 0, scale: 0.5 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
-        viewport={{ once: true }}
+        transition={{ type: "spring", stiffness: 100, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, amount: 0.3 }}
         src={BannerPng}
         alt="Fruits"
-        className="w-[300px] md:max-w-[400px] 
-    h-full object-cover drop-shadow"
+        className="w-[300px] md:max-w-[400px] h-full object-cover drop-shadow-soft relative z-10 float-animation"
       />
     </div>
   );
 }
+
 function BannerInfo() {
   return (
-    <div className="flex flex-col justify-center">
-      <div
-        className="text-center md:text-left space-y-4 
-                    lg:max-w-[400px]">
+    <div className="flex flex-col justify-center relative z-10">
+      <div className="text-center md:text-left space-y-6 lg:max-w-[500px]">
         <motion.h1
           variants={FadeUp(0.5)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="text-3xl lg:text-6xl font-bold uppercase">
-          Brand info
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-4xl md:text-6xl font-bold gradient-text text-shadow-lg">
+          Fresh & Healthy
         </motion.h1>
+        
         <TextP fadeUp={FadeUp(0.7)}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores,
-          nobis omnis minus nesciunt consequatur cupiditate sequi reprehenderit.
-          Consequuntur itaque voluptates sint quasi nobis, ipsam iusto
-          voluptatem necessitatibus eos aliquam. Facere!
+          Discover our premium selection of fresh fruits, carefully sourced and delivered 
+          to your doorstep. Experience the perfect blend of taste and nutrition with 
+          every bite.
         </TextP>
+        
         <TextP fadeUp={FadeUp(0.9)}>
-          {" "}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vero et
-          enim nihil, voluptas cum.
+          Join thousands of satisfied customers who trust us for their daily dose of 
+          healthy, delicious fruits. Start your healthy journey today!
         </TextP>
 
         {/* button section */}
-        <BTN fade={FadeUp(1.1)}>learn more</BTN>
+        <BTN fade={FadeUp(1.1)}>Learn More</BTN>
       </div>
     </div>
   );
@@ -71,7 +75,8 @@ function TextP({ children, fadeUp }) {
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}>
+      viewport={{ once: true, amount: 0.3 }}
+      className="text-lg text-gray-600 leading-relaxed">
       {children}
     </motion.p>
   );
