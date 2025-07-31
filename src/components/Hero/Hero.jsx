@@ -1,6 +1,6 @@
 import { IoBagHandleOutline } from "react-icons/io5";
 import HeroPng from "../../assets/fruit-plate.png";
-import LeafPng from "../../assets/Leaf.png";
+// import LeafPng from "../../assets/Leaf.png";
 import { motion } from "framer-motion";
 import { FadeRight } from "../../utility/animation";
 import BTN from "../BTN/BTN";
