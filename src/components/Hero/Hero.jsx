@@ -1,6 +1,6 @@
 import { IoBagHandleOutline } from "react-icons/io5";
 import HeroPng from "../../assets/fruit-plate.png";
- import LeafPng from "../../assets/Leaf.png";
+//  import LeafPng from "../../assets/Leaf.png";
 import { motion } from "framer-motion";
 import { FadeRight } from "../../utility/animation";
 import BTN from "../BTN/BTN";
@@ -17,7 +17,7 @@ const Hero = () => {
         {/* Hero Images */}
         <HeroImage />
         {/* Leaf Images */}
-        <LeafImage />
+        {/* <LeafImage /> */}
       </div>
     </section>
   );
@@ -83,19 +83,19 @@ function HeroImage() {
   );
 }
 
-function LeafImage() {
-  return (
-    <div className="absolute top-14 md:top-0 right-1/2 blur-sm opacity-80 rotate-[40deg]">
-      <motion.img
-        initial={{ opacity: 0, y: -200, rotate: 75 }}
-        animate={{ opacity: 1, y: 0, rotate: 0 }}
-        transition={{ duration: 1.2, delay: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        src={LeafPng}
-        alt="Leaf"
-        className="w-full md:max-w-[300px] animate-float-slow"
-      />
-    </div>
-  );
-}
+// function LeafImage() {
+//   return (
+//     <div className="absolute top-14 md:top-0 right-1/2 blur-sm opacity-80 rotate-[40deg]">
+//       <motion.img
+//         initial={{ opacity: 0, y: -200, rotate: 75 }}
+//         animate={{ opacity: 1, y: 0, rotate: 0 }}
+//         transition={{ duration: 1.2, delay: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+//         src={LeafPng}
+//         alt="Leaf"
+//         className="w-full md:max-w-[300px] animate-float-slow"
+//       />
+//     </div>
+//   );
+// }
 
 export default Hero;
